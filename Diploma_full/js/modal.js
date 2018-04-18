@@ -20,10 +20,15 @@ window.addEventListener('DOMContentLoaded', () => {
 			popup.classList.add('popup-disappearance');
 			main.classList.add('main-disappearance');
 
+			customInfo.classList.add('custom-info-appearance');
+			customChar.classList.add('custom-char-appearance');
+			customStyle.classList.add('custom-style-appearance');
+
 			setTimeout(() => {
 				overlay.style.display = 'none';
 				popup.style.display = 'none';
 				main.style.display = 'none';
+
 				custom.style.display= 'flex';
 				customInfo.style.display= 'block';
 				customStyle.style.display= 'block';
