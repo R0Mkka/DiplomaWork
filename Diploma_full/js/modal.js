@@ -4,7 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		overlay = document.querySelector('.overlay'),
 		popup = document.querySelector('.popup'),
 		main = document.querySelector('.main'),
-		custom = document.querySelector('.custom');
+		custom = document.querySelector('.custom'),
+		customInfo = document.querySelector('.custom-info'),
+		customStyle = document.querySelector('.custom-style'),
+		customChar = document.querySelector('.custom-char');
 
 	overlay.classList.add('overlay-appearance');
 	popup.classList.add('popup-appearance');
@@ -22,6 +25,9 @@ window.addEventListener('DOMContentLoaded', () => {
 				popup.style.display = 'none';
 				main.style.display = 'none';
 				custom.style.display= 'flex';
+				customInfo.style.display= 'block';
+				customStyle.style.display= 'block';
+				customChar.style.display= 'block';
 			}, 1000);
 		});
 	}, 1100);
