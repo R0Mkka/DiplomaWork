@@ -543,6 +543,7 @@
 .custom-style .skin-color-1,
 .custom-style .hair-color-1,
 .custom-style .clothes-color-1 {
+  overflow: hidden;
   width: 160px;
   height: 80px;
   border-radius: 10px;
@@ -675,6 +676,15 @@
   border-radius: 10px;
 }
 
+
+
+
+
+
+
+
+
+
 /* Мои анимации */
 
 .overlay-appearance {  
@@ -794,4 +804,17 @@
 @keyframes customStyleAppearance {
   0% {margin-right: -700px;}
   100% {margin-right: 0px;}
+}
+
+.prev-slide {  
+   animation-name: prevSlide;
+   animation-duration: 1.0s;
+   animation-timing-function: ease-in-out;
+   animation-delay: 0.0s;
+   animation-iteration-count: 1;
+}
+
+@keyframes prevSlide {
+  0% {padding-right: -500px;}
+  100% {padding-right: 0px;}
 }
