@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				customInfo.style.display= 'block';
 				customStyle.style.display= 'block';
 				customChar.style.display= 'block';
-			}, 1000);
+			}, 1100);
 		});
 	}, 1100);
 

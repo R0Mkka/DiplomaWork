@@ -728,7 +728,7 @@
 
 .overlay-disappearance {  
    animation-name: overlayDisappearance;
-   animation-duration: 1.0s;
+   animation-duration: 1.1s;
    animation-timing-function: ease-in-out;
    animation-delay: 0.0s;
    animation-iteration-count: 1;
@@ -741,7 +741,7 @@
 
 .popup-disappearance {  
    animation-name: popupDisappearance;
-   animation-duration: 1.0s;
+   animation-duration: 1.1s;
    animation-timing-function: ease-in-out;
    animation-delay: 0.0s;
    animation-iteration-count: 1;
@@ -754,7 +754,7 @@
 
 .main-disappearance {  
    animation-name: mainDisappearance;
-   animation-duration: 1.0s;
+   animation-duration: 1.1s;
    animation-timing-function: ease-in-out;
    animation-delay: 0.0s;
    animation-iteration-count: 1;
@@ -806,15 +806,41 @@
   100% {margin-right: 0px;}
 }
 
-.prev-slide {  
-   animation-name: prevSlide;
-   animation-duration: 1.0s;
+.custom-info-disappearance {  
+   animation-name: customInfoDisappearance;
+   animation-duration: 1.1s;
    animation-timing-function: ease-in-out;
    animation-delay: 0.0s;
    animation-iteration-count: 1;
 }
 
-@keyframes prevSlide {
-  0% {padding-right: -500px;}
-  100% {padding-right: 0px;}
+@keyframes customInfoDisappearance {
+  0% {margin-left: 0px;}
+  100% {margin-left: -700px;}
+}
+
+.custom-char-disappearance {  
+   animation-name: customCharDisappearance;
+   animation-duration: 1.1s;
+   animation-timing-function: ease-in-out;
+   animation-delay: 0.0s;
+   animation-iteration-count: 1;
+}
+
+@keyframes customCharDisappearance {
+  0% {margin-top: 0px;}
+  100% {margin-top: -700px;}
+}
+
+.custom-style-disappearance {  
+   animation-name: customStyleDisappearance;
+   animation-duration: 1.1s;
+   animation-timing-function: ease-in-out;
+   animation-delay: 0.0s;
+   animation-iteration-count: 1;
+}
+
+@keyframes customStyleDisappearance {
+  0% {margin-right: 0px;}
+  100% {margin-right: -700px;}
 }
