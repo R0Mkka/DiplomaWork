@@ -95,6 +95,8 @@
 
 .main-cards-item-active {
   border: 3px solid #1f8ce2;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .main-cards-item .candidate-block {
