@@ -17,11 +17,6 @@ crimeBtn.addEventListener('click', () => {
 
 	total = first + second + third;
 
-	console.log(first);
-	console.log(second);
-	console.log(third);
-	console.log('------------------');
-
 	let firstCandidate = getPercent(first),
 		secondCandidate = getPercent(second),
 		thirdCandidate = getPercent(third + (total * 0.25));
