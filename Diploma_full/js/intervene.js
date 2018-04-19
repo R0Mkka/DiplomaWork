@@ -19,10 +19,10 @@ crimeBtn.addEventListener('click', () => {
 
 	let firstCandidate = getPercent(first),
 		secondCandidate = getPercent(second),
-		thirdCandidate = getPercent(third + (total * 0.25));
+		thirdCandidate = getPercent(third);
 
 	function getPercent(number){
-		return Math.round((100 / (total * 1.25)) * number);
+		return Math.round((100 / total) * number);
 	}
 
 	let temp = 0;
@@ -43,6 +43,28 @@ crimeBtn.addEventListener('click', () => {
 		else if (temp <= 0.666) secondCandidate--;
 		else thirdCandidate--;
 
+	}
+
+	if (thirdCandidate >= 75) {
+		firstCandidate = 0;
+		secondCandidate = 0;
+		thirdCandidate = 100;
+	} else {
+
+		thirdCandidate += 25;
+
+		for (let i = 0; i < 12; i++){
+			if (firstCandidate - 1 >= 0 && secondCandidate - 1 >= 0) {
+				firstCandidate--;
+				secondCandidate--;
+			} else {
+				if (firstCandidate - 1 >= 0) firstCandidate -= 2;
+				else secondCandidate -= 2;
+			}
+		}
+
+		if (firstCandidate - 1 >= 0) firstCandidate--;
+		else secondCandidate--;
 	}
 
 	countBlocks[0].innerHTML = firstCandidate + '%';
