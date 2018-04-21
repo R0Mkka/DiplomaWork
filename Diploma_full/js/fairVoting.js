@@ -5,6 +5,9 @@ let votingBtn = document.getElementById('voting'),
 
 votingBtn.addEventListener('click', () => {
 
+	let rogueBlock = document.getElementById('rogue-div');
+	rogueBlock.style.display = 'none';
+
 	let first = 0.0,
 		second = 0.0,
 		third = 0.0,

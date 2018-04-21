@@ -441,8 +441,8 @@
   margin-top: 30px;
   left: 50%;
   transform: translate(-50%);
-  width: 180px;
-  height: 450px;
+  width: 210px;
+  height: 460px;
   background: url("../img/skin/skin-1.png") center no-repeat;
   background-size: cover;
 }
@@ -452,8 +452,8 @@
   margin-top: 30px;
   left: 50%;
   transform: translate(-50%);
-  width: 180px;
-  height: 450px;
+  width: 210px;
+  height: 460px;
   background: url("../img/clothes/construct/clothes-1.png") center no-repeat;
   background-size: cover;
 }
@@ -463,8 +463,8 @@
   margin-top: 30px;
   left: 50%;
   transform: translate(-50%);
-  width: 180px;
-  height: 450px;
+  width: 210px;
+  height: 460px;
   background: url("../img/hair/construct/hair-1.png") center no-repeat;
   background-size: cover;
 }
@@ -474,8 +474,8 @@
   margin-top: 30px;
   left: 50%;
   transform: translate(-50%);
-  width: 180px;
-  height: 450px;
+  width: 210px;
+  height: 460px;
   background: url("../img/clothes/construct/shoes.png") center no-repeat;
   background-size: cover;
 }
@@ -572,6 +572,30 @@
   background-color: #a5673f;
 }
 
+.custom-style .skin-color-4 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #e22929;
+}
+
+.custom-style .skin-color-5 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #5ea950;
+}
+
+.custom-style .skin-color-6 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #e9d5ca;
+}
+
 .custom-style .hair-style-1 {
   width: 160px;
   height: 80px;
@@ -625,6 +649,24 @@
   border-radius: 10px;
 }
 
+.custom-style .hair-style-7 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  background: #f2f2f2 url("../img/hair/slide/hair-7.png") center no-repeat;
+  background-size: 40%;
+  border-radius: 10px;
+}
+
+.custom-style .hair-style-8 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  background: #f2f2f2 url("../img/hair/slide/hair-8.png") center no-repeat;
+  background-size: 40%;
+  border-radius: 10px;
+}
+
 .custom-style .clothes-style-1 {
   width: 160px;
   height: 80px;
@@ -674,6 +716,24 @@
   width: 160px;
   height: 80px;
   background: #aeaeae url("../img/clothes/slide/clothes-6.png") center no-repeat;
+  background-size: 20%;
+  border-radius: 10px;
+}
+
+.custom-style .clothes-style-7 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  background: #aeaeae url("../img/clothes/slide/clothes-7.png") center no-repeat;
+  background-size: 20%;
+  border-radius: 10px;
+}
+
+.custom-style .clothes-style-8 {
+  display: none;
+  width: 160px;
+  height: 80px;
+  background: #aeaeae url("../img/clothes/slide/clothes-8.png") center no-repeat;
   background-size: 20%;
   border-radius: 10px;
 }

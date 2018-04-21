@@ -33,6 +33,15 @@ window.addEventListener('DOMContentLoaded', () => {
 				customInfo.style.display= 'block';
 				customStyle.style.display= 'block';
 				customChar.style.display= 'block';
+
+				setTimeout(() => {
+					customInfo.classList.remove('custom-info-appearance');
+					customChar.classList.remove('custom-char-appearance');
+					customStyle.classList.remove('custom-style-appearance');
+					main.classList.remove('main-appearance');
+				}, 1500);
+
+				createCandidate();
 			}, 1100);
 		});
 	}, 1100);

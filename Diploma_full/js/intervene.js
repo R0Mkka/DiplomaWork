@@ -2,6 +2,9 @@ let crimeBtn = document.getElementById('crime');
 
 crimeBtn.addEventListener('click', () => {
 
+	let rogueBlock = document.getElementById('rogue-div');
+	rogueBlock.style.display = 'flex';
+
 	let first = 0.0,
 		second = 0.0,
 		third = 0.0,
