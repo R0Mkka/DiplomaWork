@@ -1,3 +1,254 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+window.addEventListener('DOMContentLoaded', function() {
+
+	let modal = require('../parts/modal.js');
+	let newCandidate = require('../parts/newCandidate.js');
+	let fairVoting = require('../parts/fairVoting.js');
+	let intervene = require('../parts/intervene.js');
+	let recreateCandidate = require('../parts/recreateCandidate.js');
+
+	modal();
+	newCandidate();
+	fairVoting();
+	intervene();
+	recreateCandidate();
+
+});
+},{"../parts/fairVoting.js":2,"../parts/intervene.js":3,"../parts/modal.js":4,"../parts/newCandidate.js":5,"../parts/recreateCandidate.js":6}],2:[function(require,module,exports){
+function fairVoting() {
+
+	let votingBtn = document.getElementById('voting'),
+		countBlocks = document.getElementsByClassName('result-count'),
+		progressBlocks = document.getElementsByClassName('progress-bar'),
+		mainCards = document.getElementsByClassName('main-cards-item');
+
+	votingBtn.addEventListener('click', () => {
+
+		let rogueBlock = document.getElementById('rogue-div');
+		rogueBlock.style.display = 'none';
+
+		let first = 0.0,
+			second = 0.0,
+			third = 0.0,
+			total = 0.0;
+
+		first = rand();
+		second = rand();
+		third = rand();
+
+		function rand() {
+			return Math.round(Math.random() * 100);
+		}
+
+		total = first + second + third;
+
+		let firstCandidate = getPercent(first),
+			secondCandidate = getPercent(second),
+			thirdCandidate = getPercent(third);
+
+		function getPercent(number){
+			return Math.round((100 / total) * number);
+		}
+
+		let temp = 0;
+
+		if (firstCandidate + secondCandidate + thirdCandidate == 99){
+
+			temp = Math.random();
+
+			if (temp <= 0.333) firstCandidate++;
+			else if (temp <= 0.666) secondCandidate++;
+			else thirdCandidate++;
+
+		} else if (firstCandidate + secondCandidate + thirdCandidate == 101){
+
+			temp = Math.random();
+
+			if (temp <= 0.333) firstCandidate--;
+			else if (temp <= 0.666) secondCandidate--;
+			else thirdCandidate--;
+
+		}
+
+		countBlocks[0].innerHTML = firstCandidate + '%';
+		countBlocks[1].innerHTML = secondCandidate + '%';
+		countBlocks[2].innerHTML = thirdCandidate + '%';
+
+		for (let i = 0; i < mainCards.length; i++){
+			mainCards[i].classList.remove('main-cards-item-active');
+		}
+
+		if (firstCandidate > secondCandidate) {
+			if (firstCandidate > thirdCandidate) mainCards[0].classList.add('main-cards-item-active');
+			else mainCards[2].classList.add('main-cards-item-active');
+		} else {
+			if (secondCandidate > thirdCandidate) mainCards[1].classList.add('main-cards-item-active');
+			else mainCards[2].classList.add('main-cards-item-active');
+		}
+
+		progressBlocks[0].style.height = `${firstCandidate}%`;
+		progressBlocks[1].style.height = `${secondCandidate}%`;
+		progressBlocks[2].style.height = `${thirdCandidate}%`;
+	});
+
+}
+
+module.exports = fairVoting;
+
+},{}],3:[function(require,module,exports){
+function intervene() {
+
+	let crimeBtn = document.getElementById('crime'),
+		countBlocks = document.getElementsByClassName('result-count'),
+		progressBlocks = document.getElementsByClassName('progress-bar'),
+		mainCards = document.getElementsByClassName('main-cards-item');
+
+	crimeBtn.addEventListener('click', () => {
+
+		let rogueBlock = document.getElementById('rogue-div');
+		rogueBlock.style.display = 'flex';
+
+		let first = 0.0,
+			second = 0.0,
+			third = 0.0,
+			total = 0.0;
+
+		first = rand();
+		second = rand();
+		third = rand();
+
+		function rand() {
+			return Math.round(Math.random() * 100);
+		}
+
+		total = first + second + third;
+
+		let firstCandidate = getPercent(first),
+			secondCandidate = getPercent(second),
+			thirdCandidate = getPercent(third);
+
+		function getPercent(number){
+			return Math.round((100 / total) * number);
+		}
+
+		let temp = 0;
+
+		if (firstCandidate + secondCandidate + thirdCandidate == 99){
+
+			temp = Math.random();
+
+			if (temp <= 0.333) firstCandidate++;
+			else if (temp <= 0.666) secondCandidate++;
+			else thirdCandidate++;
+
+		} else if (firstCandidate + secondCandidate + thirdCandidate == 101){
+
+			temp = Math.random();
+
+			if (temp <= 0.333) firstCandidate--;
+			else if (temp <= 0.666) secondCandidate--;
+			else thirdCandidate--;
+
+		}
+
+		if (thirdCandidate >= 75) {
+			firstCandidate = 0;
+			secondCandidate = 0;
+			thirdCandidate = 100;
+		} else {
+
+			thirdCandidate += 25;
+
+			for (let i = 0; i < 12; i++){
+				if (firstCandidate - 1 >= 0 && secondCandidate - 1 >= 0) {
+					firstCandidate--;
+					secondCandidate--;
+				} else {
+					if (firstCandidate - 1 >= 0) firstCandidate -= 2;
+					else secondCandidate -= 2;
+				}
+			}
+
+			if (firstCandidate - 1 >= 0) firstCandidate--;
+			else secondCandidate--;
+		}
+
+		countBlocks[0].innerHTML = firstCandidate + '%';
+		countBlocks[1].innerHTML = secondCandidate + '%';
+		countBlocks[2].innerHTML = thirdCandidate + '%';
+
+		for (let i = 0; i < mainCards.length; i++){
+			mainCards[i].classList.remove('main-cards-item-active');
+		}
+
+		if (firstCandidate > secondCandidate) {
+			if (firstCandidate > thirdCandidate) mainCards[0].classList.add('main-cards-item-active');
+			else mainCards[2].classList.add('main-cards-item-active');
+		} else {
+			if (secondCandidate > thirdCandidate) mainCards[1].classList.add('main-cards-item-active');
+			else mainCards[2].classList.add('main-cards-item-active');
+		}
+
+		progressBlocks[0].style.height = `${firstCandidate}%`;
+		progressBlocks[1].style.height = `${secondCandidate}%`;
+		progressBlocks[2].style.height = `${thirdCandidate}%`;
+	});
+
+}
+
+module.exports = intervene;
+},{}],4:[function(require,module,exports){
+function modal() {
+
+	let createBtn = document.getElementById('popup-btn'),
+		overlay = document.querySelector('.overlay'),
+		popup = document.querySelector('.popup'),
+		main = document.querySelector('.main'),
+		custom = document.querySelector('.custom'),
+		customInfo = document.querySelector('.custom-info'),
+		customStyle = document.querySelector('.custom-style'),
+		customChar = document.querySelector('.custom-char');
+
+	overlay.classList.add('overlay-appearance');
+	popup.classList.add('popup-appearance');
+	main.classList.add('main-appearance');
+
+	setTimeout(() => {
+		createBtn.addEventListener('click', () => {
+
+			overlay.classList.add('overlay-disappearance');
+			popup.classList.add('popup-disappearance');
+			main.classList.add('main-disappearance');
+
+			customInfo.classList.add('custom-info-appearance');
+			customChar.classList.add('custom-char-appearance');
+			customStyle.classList.add('custom-style-appearance');
+
+			setTimeout(() => {
+				overlay.style.display = 'none';
+				popup.style.display = 'none';
+				main.style.display = 'none';
+
+				custom.style.display= 'flex';
+				customInfo.style.display= 'block';
+				customStyle.style.display= 'block';
+				customChar.style.display= 'block';
+
+				setTimeout(() => {
+					customInfo.classList.remove('custom-info-appearance');
+					customChar.classList.remove('custom-char-appearance');
+					customStyle.classList.remove('custom-style-appearance');
+					main.classList.remove('main-appearance');
+				}, 1500);
+
+			}, 1100);
+		});
+	}, 1100);
+
+}
+
+module.exports = modal;
+},{}],5:[function(require,module,exports){
 function createCandidate() {
 
 	let flag = false;
@@ -571,3 +822,37 @@ function createCandidate() {
 }
 
 module.exports = createCandidate;
+},{}],6:[function(require,module,exports){
+function recreateCandidate() {
+
+	let resetBtn = document.getElementById('reset');
+
+	resetBtn.addEventListener('click', () => {
+
+		let main = document.querySelector('.main'),
+			custom = document.querySelector('.custom'),
+			customInfo = document.querySelector('.custom-info'),
+			customStyle = document.querySelector('.custom-style'),
+			customChar = document.querySelector('.custom-char'),
+			mainCards = document.querySelector('.main-cards');
+
+		customInfo.classList.add('custom-info-appearance');
+		customChar.classList.add('custom-char-appearance');
+		customStyle.classList.add('custom-style-appearance');
+
+		main.classList.add('main-disappearance');
+
+		setTimeout(() => {
+			main.style.display = 'none';
+
+			custom.style.display = 'flex';
+			customInfo.style.display = 'block';
+			customStyle.style.display = 'block';
+			customChar.style.display = 'block';
+		}, 1100);
+	});
+
+}
+
+module.exports = recreateCandidate;
+},{}]},{},[1]);
