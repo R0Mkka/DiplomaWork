@@ -330,18 +330,20 @@ function createCandidate() {
 							  min-height: 125px;";
 
 	// Переменная для проверки корректности информации в полях для заполнения
-	let isReady = true;
+	let isReadyFio = false,
+		isReadyAge = false;
+		isReadyBio = false;
 
 	fio.addEventListener('change', function() {
 		fioVal = this.value;
 		fio.style.backgroundColor = '';
-		isReady = true;
+		isReadyFio = true;
 	});
 
 	age.addEventListener('change', function() {
 		ageVal = this.value;
 		age.style.backgroundColor = '';
-		isReady = true;
+		isReadyAge = true;
 	});
 
 	male.addEventListener('change', function() {
@@ -392,14 +394,31 @@ function createCandidate() {
 	biography.addEventListener('change', function() {
 		biographyVal = biography.value;
 		biography.style.backgroundColor = '';
-		isReady = true;
+		isReadyBio = true;
 	});
 
-	readyBtn.addEventListener('click', function() {
+		readyBtn.addEventListener('click', function() {
 
-		if (fio.value.length < 2 || !isNaN(fio.value)){
+		if (fio.value.length < 2 ||
+			fio.value.length > 35 ||
+			!isNaN(fio.value)){
+
 			fio.style.backgroundColor = '#c23e3e';
-			isReady = false;
+			isReadyFio = false;
+
+			if (fio.value == ''){
+				fio.value = "Это обязательное поле";
+			} else if(fio.value.length < 2){
+					fio.value = "Введено слишком мало символов";
+				} else if (fio.value.length > 35){
+					fio.value = "Введено слишком много символов";
+					} else {
+						fio.value = "Некорректный ввод";
+					}
+
+			fio.onfocus = function () {
+				this.select();
+			}
 		}
 
 		if (age.value == '' ||
@@ -407,16 +426,48 @@ function createCandidate() {
 			age.value < 35 ||
 			age.value > 65 ||
 			parseFloat(age.value) > parseInt(age.value)){
+
 			age.style.backgroundColor = '#c23e3e';
-			isReady = false;
+			isReadyAge = false;
+
+			if (age.value == ''){
+				age.value = "Это обязательное поле";
+			} else if(age.value < 35){
+					age.value = "Минимальный возраст 35 лет";
+				} else if (age.value > 65) {
+						age.value = "Максимальный возраст 65 лет";
+					} else {
+						age.value = "Некорректный ввод";
+					}
+
+			age.onfocus = function () {
+				this.select();
+			}
 		}
 
-		if (biography.value.length < 10 || !isNaN(biography.value)){
+		if (biography.value.length < 10 ||
+			biography.value > 120 ||
+			!isNaN(biography.value)){
+
 			biography.style.backgroundColor = '#c23e3e';
-			isReady = false;
+			isReadyBio = false;
+
+			if (biography.value == ''){
+				biography.value = "Это обязательное поле";
+			} else if(biography.value.length < 10){
+					biography.value = "Введено меньше 10 символов";
+				} else if (biography.value > 120){
+						biography.value = "Введено слишком много символов";
+					} else {
+						biography.value = "Некорректный ввод";
+					}
+
+			biography.onfocus = function () {
+				this.select();
+			}
 		}
 
-		if (isReady == true){
+		if (isReadyFio && isReadyAge && isReadyBio){
 
 			let main = document.querySelector('.main'),
 				custom = document.querySelector('.custom'),
@@ -444,8 +495,7 @@ function createCandidate() {
 			setTimeout(() => {
 
 				let mainCards = document.getElementsByClassName('main-cards-item'),
-					progressBlocks = document.getElementsByClassName('progress-bar'),
-					rogueBlock = document.getElementById('rogue-div');
+					progressBlocks = document.getElementsByClassName('progress-bar');
 
 				for (let i = 0; i < mainCards.length; i++){
 					mainCards[i].classList.remove('main-cards-item-active');
@@ -477,8 +527,6 @@ function createCandidate() {
 				clothesStyle[clothesIndex].style.display = 'none';
 				clothesIndex = 0;
 				clothesStyle[0].style.display = 'flex';
-
-				rogueBlock.style.display = 'none';
 
 				fio.value = '';
 				age.value = '';
