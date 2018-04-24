@@ -146,11 +146,14 @@ function createCandidate() {
 		isReadyBio = true;
 	});
 
-		readyBtn.addEventListener('click', function() {
+	readyBtn.addEventListener('click', function() {
+
+		let reg = /[a-z]/i;
 
 		if (fio.value.length < 2 ||
 			fio.value.length > 35 ||
-			!isNaN(fio.value)){
+			!isNaN(fio.value) ||
+			reg.test(fio.value)){
 
 			fio.style.backgroundColor = '#c23e3e';
 			isReadyFio = false;
@@ -161,9 +164,11 @@ function createCandidate() {
 					fio.value = "Введено слишком мало символов";
 				} else if (fio.value.length > 35){
 					fio.value = "Введено слишком много символов";
-					} else {
-						fio.value = "Некорректный ввод";
-					}
+					} else if (reg.test(fio.value)){
+						fio.value = "Допускаются только русские символы";
+						} else {
+							fio.value = "Некорректный ввод";
+						}
 
 			fio.onfocus = function () {
 				this.select();
@@ -196,7 +201,8 @@ function createCandidate() {
 
 		if (biography.value.length < 10 ||
 			biography.value > 120 ||
-			!isNaN(biography.value)){
+			!isNaN(biography.value) ||
+			reg.test(biography.value)){
 
 			biography.style.backgroundColor = '#c23e3e';
 			isReadyBio = false;
@@ -207,9 +213,11 @@ function createCandidate() {
 					biography.value = "Введено меньше 10 символов";
 				} else if (biography.value > 120){
 						biography.value = "Введено слишком много символов";
-					} else {
-						biography.value = "Некорректный ввод";
-					}
+					} else if (reg.test(biography.value)){
+						biography.value = "Допускаются только русские символы";
+						} else {
+							biography.value = "Некорректный ввод";
+						}
 
 			biography.onfocus = function () {
 				this.select();
