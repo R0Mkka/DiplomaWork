@@ -252,12 +252,15 @@ function createCandidate() {
 			setTimeout(() => {
 
 				let mainCards = document.getElementsByClassName('main-cards-item'),
-					progressBlocks = document.getElementsByClassName('progress-bar');
+					progressBlocks = document.getElementsByClassName('progress-bar'),
+					rogueBlock = document.getElementById('rogue-div');
 
 				for (let i = 0; i < mainCards.length; i++){
 					mainCards[i].classList.remove('main-cards-item-active');
 					progressBlocks[i].style.height = '0%';
 				}
+
+				rogueBlock.style.display = 'none';
 
 				custom.style.display = 'none';
 				customInfo.style.display = 'none';
